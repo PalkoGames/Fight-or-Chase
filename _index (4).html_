@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fight or Chase – Created by Palko Agocs</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      overflow: hidden;
+    }
+    #slideshow {
+      width: 100%;
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      animation: slide 30s infinite;
+    }
+    @keyframes slide {
+      0% {background-image: url('scene1.jpg');}
+      33% {background-image: url('scene2.jpg');}
+      66% {background-image: url('scene3.jpg');}
+      100% {background-image: url('scene1.jpg');}
+    }
+    #play-btn {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 40px;
+      background-color: crimson;
+      border: none;
+      font-size: 1.4em;
+      cursor: pointer;
+      color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 20px crimson;
+    }
+    #credit {
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+    #intro-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: url('city-faded.jpg') center/cover no-repeat;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+      animation: fadeIn 2s forwards;
+    }
+    @keyframes fadeIn {
+      to {opacity: 1;}
+    }
+    #controls {
+      background-color: rgba(0,0,0,0.7);
+      padding: 30px;
+      border-radius: 10px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="slideshow"></div>
+  <button id="play-btn">PLAY</button>
+  <div id="credit">Created by Palko Agocs</div>
+
+  <div id="intro-overlay">
+    <div id="controls">
+      <h2>Controls</h2>
+      <p>WASD or Arrow Keys – Move</p>
+      <p>Mouse Click – Interact</p>
+      <p>Space Bar – Confirm/Launch</p>
+    </div>
+  </div>
+
+  <script>
+    const playBtn = document.getElementById('play-btn');
+    const introOverlay = document.getElementById('intro-overlay');
+
+    playBtn.addEventListener('click', () => {
+      document.getElementById('slideshow').style.display = 'none';
+      playBtn.style.display = 'none';
+      document.getElementById('credit').style.display = 'none';
+      introOverlay.style.display = 'flex';
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' && introOverlay.style.display === 'flex') {
+        introOverlay.style.animation = 'fadeOut 2s forwards';
+        setTimeout(() => {
+          window.location.href = 'game.html'; // Replace with your actual game start file
+        }, 2000);
+      }
+    });
+
+    document.addEventListener('click', () => {
+      if (introOverlay.style.display === 'flex') {
+        introOverlay.style.animation = 'fadeOut 2s forwards';
+        setTimeout(() => {
+          window.location.href = 'game.html'; // Replace with your actual game start file
+        }, 2000);
+      }
+    });
+  </script>
+
+</body><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fight or Chase - Game</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fight or Chase</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: black;
+      color: white;
+      overflow: hidden;
+    }
+    #slideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      animation: fadeSlideshow 20s infinite;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.5;
+    }
+    @keyframes fadeSlideshow {
+      0%   { background-image: url('scene1.jpg'); }
+      33%  { background-image: url('scene2.jpg'); }
+      66%  { background-image: url('scene3.jpg'); }
+      100% { background-image: url('scene1.jpg'); }#minimap-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 180px;
+  height: 180px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 2px solid limegreen;
+  border-radius: 10px;
+  z-index: 30;
+  display: none;
+  overflow: hidden;
+}
+
+#arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: limegreen;
+  transform: translate(-50%, -50%) rotate(0deg);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+    }
+
+    #center-content {
+      position: relative;
+      z-index: 2;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #description {
+      font-size: 1.8em;
+      max-width: 700px;
+      margin-bottom: 30px;
+      line-height: 1.5em;
+    }
+
+    #play-btn {
+      background-color: white;
+      color: black;
+      padding: 15px 40px;
+      font-size: 1.3em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 20px white;
+      transition: 0.3s;
+    }
+
+    #play-btn:hover {
+      background-color: crimson;
+      color: white;
+      box-shadow: 0 0 30px crimson;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="slideshow"></div>
+
+  <div id="center-content">
+    <div id="description">
+      "Fight or Chase" is a fast-paced city simulation where players choose between escaping danger or confronting it head-on. Dodge police patrols, interact with factions, and survive the city's chaos—all in your own style.
+    </div>
+    <button id="play-btn">PLAY</button>
+  </div>
+
+  <script>
+    const playBtn = document.getElementById('play-btn');
+    playBtn.addEventListener('click', () => {
+      window.location.href = 'game.html'; // Link to your game page
+    });
+  </script>
+
+</body>
+</html>
+
